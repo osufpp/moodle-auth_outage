@@ -274,6 +274,8 @@ class behat_auth_outage extends behat_base {
                 'stopsafter' => 60,
                 'finished' => null,
                 'title' => 'Outage Title',
+                'premaintenancebanner' => 'Pre-maintenance Banner.',
+                'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner.',
                 'description' => 'Outage Description.',
             ],
             $row
@@ -293,6 +295,8 @@ class behat_auth_outage extends behat_base {
             'stoptime' => $starttime + $row['stopsafter'],
             'finished' => $row['finished'],
             'title' => $row['title'],
+            'premaintenancebanner' => $row['premaintenancebanner'],
+            'ongoingmaintenancebanner' => $row['ongoingmaintenancebanner'],
             'description' => $row['description'],
         ]);
         outagedb::save($this->outage);

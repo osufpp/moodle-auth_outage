@@ -65,6 +65,8 @@ class infopagecontroller_test extends auth_outage_base_testcase {
             'starttime' => time(),
             'stoptime' => time() + 60,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         $this->set_expected_exception('coding_exception');
@@ -100,6 +102,8 @@ class infopagecontroller_test extends auth_outage_base_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         $info = new infopage(['outage' => $outage]);

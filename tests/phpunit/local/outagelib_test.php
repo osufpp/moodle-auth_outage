@@ -56,6 +56,8 @@ class outagelib_test extends advanced_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
 
@@ -92,6 +94,8 @@ class outagelib_test extends advanced_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
@@ -131,6 +135,8 @@ class outagelib_test extends advanced_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
@@ -168,6 +174,8 @@ class outagelib_test extends advanced_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
@@ -199,6 +207,8 @@ class outagelib_test extends advanced_testcase {
             'default_warning_duration',
             'allowedips',
             'remove_selectors',
+            'default_premaintenance_banner',
+            'default_ongoingmaintenance_banner',
         ];
         // Set config with values.
         foreach ($keys as $k) {
@@ -225,6 +235,8 @@ class outagelib_test extends advanced_testcase {
             'default_title',
             'default_warning_duration',
             'remove_selectors',
+            'default_premaintenance_banner',
+            'default_ongoingmaintenance_banner',
         ];
         $defaults = outagelib::get_config_defaults();
         foreach ($keys as $k) {
@@ -245,6 +257,8 @@ class outagelib_test extends advanced_testcase {
         set_config('default_duration', " \n", 'auth_outage');
         set_config('default_title', " \n", 'auth_outage');
         set_config('default_warning_duration', " \n", 'auth_outage');
+        set_config('default_premaintenance_banner', " \n", 'auth_outage');
+        set_config('default_ongoingmaintenance_banner', " \n", 'auth_outage');
         // Get defaults.
         $defaults = outagelib::get_config_defaults();
         $config = outagelib::get_config();
@@ -269,6 +283,8 @@ class outagelib_test extends advanced_testcase {
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
@@ -462,6 +478,8 @@ EOT;
             'starttime' => $now - 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         outagedb::save($outage);
@@ -487,6 +505,8 @@ EOT;
             'starttime' => $now + 100,
             'stoptime' => $now + 200,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
@@ -511,6 +531,8 @@ EOT;
             'starttime'   => $now - 100,
             'stoptime'    => $now + 200,
             'title'       => 'Title',
+            'premaintenancebanner' => 'Pre-maintenanceBanner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
             'description' => 'Description',
         ]);
         set_config('allowedips', '127.0.0.1', 'auth_outage');

@@ -64,6 +64,8 @@ class outage_test extends auth_outage_base_testcase {
         $obj->stoptime = 5;
         $obj->title = 'Title';
         $obj->description = 'Description';
+        $obj->premaintenancebanner = 'Pre-maintenance Banner',
+        $obj->ongoingmaintenancebanner = 'Ongoing-maintenance Banner',
         $outage = new outage($obj);
         self::assertSame($obj->id, $outage->id);
         self::assertSame($obj->autostart, $outage->autostart);
@@ -94,6 +96,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now - (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertSame(outage::STAGE_STOPPED, $outage->get_stage());
@@ -120,6 +124,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now - (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertFalse($outage->is_ongoing($now));
@@ -130,6 +136,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now + (1 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertTrue($outage->is_ongoing($now));
@@ -140,6 +148,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now + (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertFalse($outage->is_ongoing($now));
@@ -157,6 +167,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now - (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertFalse($outage->is_active($now));
@@ -167,6 +179,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now + (1 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertTrue($outage->is_active($now));
@@ -177,6 +191,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now + (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertTrue($outage->is_active($now));
@@ -187,6 +203,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now + (3 * 60 * 60),
             'warntime' => $now + (1 * 60 * 60),
             'title' => '',
+            'premaintenancebanner' => '',
+            'ongoingmaintenancebanner' => '',
             'description' => '',
         ]);
         self::assertFalse($outage->is_active($now));
@@ -278,6 +296,8 @@ class outage_test extends auth_outage_base_testcase {
             'stoptime' => $now - 30,
             'finished' => $now - 20,
             'title' => 'Title {{start}} {{stop}} {{duration}}',
+            'premaintenancebanner' => 'Pre-Maintenance Banner {{start}} {{stop}} {{duration}}',
+            'ongoingmaintenancebanner' => 'Ongoing-Maintenance Banner {{start}} {{stop}} {{duration}}',
             'description' => 'Description {{start}} {{stop}} {{duration}}',
         ]);
         $title = $outage->get_title();

@@ -66,6 +66,25 @@ if ($hassiteconfig && is_enabled_auth('outage')) {
         $defaults['default_title'],
         PARAM_TEXT
     ));
+
+    // PRE-MAINTENANCE BANNER
+    $settings->add(new admin_setting_configtext(
+        'auth_outage/default_premaintenance_banner',
+        get_string('defaultpremaintenancebanner', 'auth_outage'),
+        get_string('defaultpremaintenancebannerdescription', 'auth_outage'),
+        $defaults['default_premaintenance_banner'],
+        PARAM_TEXT
+    ));
+    
+    // ONGOING-MAINTENANCE BANNER
+    $settings->add(new admin_setting_configtext(
+        'auth_outage/default_ongoingmaintenance_banner',
+        get_string('defaultongoingmaintenancebanner', 'auth_outage'),
+        get_string('defaultongoingmaintenancebannerdescription', 'auth_outage'),
+        $defaults['default_ongoingmaintenance_banner'],
+        PARAM_TEXT
+    ));
+
     $settings->add(new admin_setting_configtextarea(
         'auth_outage/default_description',
         get_string('defaultdescription', 'auth_outage'),

@@ -72,6 +72,8 @@ class forms_test extends auth_outage_base_testcase {
         self::assertSame(mktime(14, 15, 0, 2, 1, 2013), $outage->starttime);
         self::assertSame(2 * 60 * 60, $outage->get_duration_planned());
         self::assertSame('The title.', $outage->title);
+        self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
+        self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
         self::assertSame('The <b>description</b>.', $outage->description);
     }
 
@@ -160,6 +162,8 @@ class forms_test extends auth_outage_base_testcase {
             'starttime'   => time(),
             'stoptime'    => time() + 60,
             'title'       => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         $edit = new edit();
@@ -193,6 +197,8 @@ class forms_test extends auth_outage_base_testcase {
             ],
             'outageduration'                    => ['number' => '2', 'timeunit' => '3600'],
             'title'                             => 'The title.',
+            'premaintenancebanner'              => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner'          => 'Ongoing-maintenance Banner',
             'description'                       => ['text' => 'The <b>description</b>.', 'format' => '1'],
             'submitbutton'                      => 'Save changes',
         ];

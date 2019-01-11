@@ -60,6 +60,8 @@ class calendar_test extends advanced_testcase {
             'starttime' => $time,
             'stoptime' => $time + (2 * 60 * 60),
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         calendar::create(self::$outage);
@@ -104,6 +106,8 @@ class calendar_test extends advanced_testcase {
             'starttime' => $time,
             'stoptime' => $time + (2 * 60 * 60),
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
 

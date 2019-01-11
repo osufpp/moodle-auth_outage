@@ -60,6 +60,8 @@ class create_test extends auth_outage_cli_testcase {
             'start' => 200,
             'duration' => 300,
             'title' => 'Default Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
@@ -76,6 +78,8 @@ class create_test extends auth_outage_cli_testcase {
             'start' => 200,
             'duration' => 300,
             'title' => 'Default Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
@@ -92,6 +96,8 @@ class create_test extends auth_outage_cli_testcase {
             'start' => 200,
             'duration' => 300,
             'title' => 'Default Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
@@ -108,6 +114,8 @@ class create_test extends auth_outage_cli_testcase {
             'start' => 200,
             'duration' => 300,
             'title' => 'Default Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
@@ -152,6 +160,8 @@ class create_test extends auth_outage_cli_testcase {
             '--start=0',
             '--duration=30',
             '--title=A Title',
+            '--premaintenancebanner=Pre-maintenance Banner',
+            '--ongoingmaintenancebanner=Ongoing-maintenance Banner',
             '--description=A Description',
         ]);
         $now = time();
@@ -182,6 +192,8 @@ class create_test extends auth_outage_cli_testcase {
             '--start=0',
             '--duration=30',
             '--title=Title',
+            '--premaintenancebanner=Pre-maintenanceBanner',
+            '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
             '--description=Description',
         ]);
         $now = time();
@@ -199,6 +211,8 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame($outage->starttime + 30, $outage->stoptime);
         self::assertNull($outage->finished);
         self::assertSame('Title', $outage->title);
+        self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
+        self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
         self::assertSame('Description', $outage->description);
     }
 
@@ -219,6 +233,8 @@ class create_test extends auth_outage_cli_testcase {
             'start' => 200,
             'duration' => 300,
             'title' => 'Default Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Default Description',
         ]);
         $text = $this->execute($cli);
@@ -232,6 +248,8 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame($outage->starttime + 300, $outage->stoptime, 'Wrong stoptime.');
         self::assertNull($outage->finished);
         self::assertSame('Default Title', $outage->title);
+        self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
+        self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
         self::assertSame('Default Description', $outage->description);
     }
 
@@ -248,6 +266,8 @@ class create_test extends auth_outage_cli_testcase {
             'starttime' => $now,
             'stoptime' => $now + 120,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         $id = outagedb::save($original);
@@ -266,6 +286,8 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame($original->get_warning_duration(), $cloned->get_warning_duration());
         self::assertSame($original->get_duration_planned(), $cloned->get_duration_planned());
         self::assertSame($original->title, $cloned->title);
+        self::assertSame($original->premaintenancebanner, $cloned->premaintenancebanner);
+        self::assertSame($original->ongoingmaintenancebanner, $cloned->ongoingmaintenancebanner);
         self::assertSame($original->description, $cloned->description);
     }
 
@@ -294,6 +316,8 @@ class create_test extends auth_outage_cli_testcase {
             '--start=0',
             '--duration=600',
             '--title=Title',
+            '--premaintenancebanner=Pre-maintenanceBanner',
+            '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
             '--description=Description',
         ]);
         $now = time();
@@ -323,6 +347,8 @@ class create_test extends auth_outage_cli_testcase {
             '--start=0',
             '--duration=600',
             '--title=Title',
+            '--premaintenancebanner=Pre-maintenanceBanner',
+            '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
             '--description=Description',
         ]);
         $cli = new create();
