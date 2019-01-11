@@ -32,8 +32,8 @@ global $OUTPUT;
 $start = userdate($viewbag['outage']->starttime, get_string('datetimeformat', 'auth_outage'));
 $stop = userdate($viewbag['outage']->stoptime, get_string('datetimeformat', 'auth_outage'));
 
-$countdown = get_string('messageoutagewarning', 'auth_outage', ['start' => $start, 'stop' => $stop]);
-$ongoing = get_string('messageoutageongoing', 'auth_outage', ['start' => $start, 'stop' => $stop]);
+$countdown = $viewbag['outage']->get_pre_maintenance_banner();
+$ongoing = $viewbag['outage']->get_ongoing_maintenance_banner();
 $message = $viewbag['outage']->is_ongoing($viewbag['time']) ? $ongoing : '';
 
 $infolink = new moodle_url('/auth/outage/info.php', ['id' => $viewbag['outage']->id]);
@@ -70,7 +70,6 @@ if (!$viewbag['static']) {
     <div id="auth_outage_warningbar_box">
         <div class="auth_outage_warningbar_center">
             <div id="auth_outage_warningbar_message"><?php echo $message; ?></div>
-            <div id="auth_outage_warningbar_title"><?php echo $title; ?></div>
         </div>
     </div>
 

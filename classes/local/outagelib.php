@@ -142,13 +142,17 @@ class outagelib {
      * @return mixed[] Default configuration.
      */
     public static function get_config_defaults() {
+        global $CFG;
+        
         return [
             'allowedips'               => '',
-            'css'                      => '',
+            'css'                      => file_get_contents($CFG->dirroot.'/auth/outage/views/warningbar/warningbar.css'),
             'default_autostart'        => '0',
             'default_duration'         => (string)(60 * 60),
             'default_warning_duration' => (string)(60 * 60),
             'default_title'            => get_string('defaulttitlevalue', 'auth_outage'),
+            'default_premaintenance_banner' => get_string('defaultpremaintenancebannervalue', 'auth_outage'),
+            'default_ongoingmaintenance_banner' => get_string('defaultongoingmaintenancebannervalue', 'auth_outage'),
             'default_description'      => get_string('defaultdescriptionvalue', 'auth_outage'),
             'remove_selectors'         => ".usermenu\n.logininfo\n.homelink",
         ];

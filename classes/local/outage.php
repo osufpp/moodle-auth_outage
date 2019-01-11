@@ -105,6 +105,16 @@ class outage {
     public $description = null;
 
     /**
+     * @var string|null Description of the outage (no HTML).
+     */
+    public $premaintenancebanner = null;
+
+    /**
+     * @var string|null Description of the outage (no HTML).
+     */
+    public $ongoingmaintenancebanner = null;
+
+    /**
      * @var int|null Moodle User Id that created this outage.
      */
     public $createdby = null;
@@ -245,6 +255,22 @@ class outage {
      */
     public function get_description() {
         return $this->replace_placeholders($this->description);
+    }
+
+    /**
+     * Get the pre-maintenance banner with properly replaced placeholders such as {{start}} and {{stop}}.
+     * @return string Description.
+     */
+    public function get_pre_maintenance_banner() {
+        return $this->replace_placeholders($this->premaintenancebanner);
+    }
+
+    /**
+     * Get the ongoing-maintenance banner with properly replaced placeholders such as {{start}} and {{stop}}.
+     * @return string Description.
+     */
+    public function get_ongoing_maintenance_banner() {
+        return $this->replace_placeholders($this->ongoingmaintenancebanner);
     }
 
     /**

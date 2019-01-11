@@ -72,6 +72,8 @@ class outagedb_test extends auth_outage_base_testcase {
             'stoptime' => $now + ($stop * 60 * 60),
             'finished' => is_null($finished) ? null : ($now + ($finished * 60 * 60)),
             'title' => $title,
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Test Outage Description.',
         ]));
     }
@@ -202,7 +204,7 @@ class outagedb_test extends auth_outage_base_testcase {
             $inserted = outagedb::get_by_id($id);
             self::assertNotNull($inserted);
             // Check its data.
-            foreach (['starttime', 'stoptime', 'warntime', 'title', 'description'] as $field) {
+            foreach (['starttime', 'stoptime', 'warntime', 'title', 'premaintenancebanner', 'ongoingmaintenancebanner', 'description'] as $field) {
                 self::assertSame($outage->$field, $inserted->$field, 'Field '.$field.' does not match.');
             }
             // Check generated data.
@@ -444,6 +446,8 @@ class outagedb_test extends auth_outage_base_testcase {
             'starttime' => $time + (60 * 60 * 24 * 2),
             'stoptime' => $time + (60 * 60 * 24 * 3),
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         $id = outagedb::save($outage);
@@ -484,6 +488,8 @@ class outagedb_test extends auth_outage_base_testcase {
             'stoptime' => $i * 100 + 50,
             'warntime' => $i * 60,
             'title' => 'The Title '.$i,
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'A <b>description</b> in HTML.',
         ]);
     }

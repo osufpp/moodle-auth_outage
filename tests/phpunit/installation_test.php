@@ -62,6 +62,8 @@ class installation_test extends auth_outage_base_testcase {
             'stoptime' => $now + (2 * 60 * 60),
             'warntime' => $now - (2 * 60 * 60),
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]);
         \auth_outage\dml\outagedb::save($outage);

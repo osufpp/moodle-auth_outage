@@ -98,6 +98,8 @@ class finish_test extends auth_outage_cli_testcase {
             'starttime' => $now - 100,
             'stoptime' => $now - 50,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]));
         $this->set_parameters(['-id='.$id]);
@@ -119,6 +121,8 @@ class finish_test extends auth_outage_cli_testcase {
             'starttime' => $now - 100,
             'stoptime' => $now + 100,
             'title' => 'Title',
+            'premaintenancebanner' => 'Pre-maintenance Banner',
+            'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
             'description' => 'Description',
         ]));
         $this->set_parameters(['-id='.$id]);

@@ -67,6 +67,8 @@ if ($clone) {
         'stoptime' => $time + $config->default_duration,
         'warntime' => $time - $config->default_warning_duration,
         'title' => $config->default_title,
+        'premaintenancebanner' => $config->default_premaintenance_banner,
+        'ongoingmaintenancebanner' => $config->default_ongoingmaintenance_banner,
         'description' => $config->default_description,
     ]);
     $action = 'outagecreate';

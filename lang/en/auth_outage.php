@@ -144,6 +144,24 @@ $string['warningdurationerrorinvalid'] = 'Warning duration must be positive.';
 $string['warningduration'] = 'Warning duration';
 $string['warningduration_help'] = 'How long before the start of the outage should the warning be displayed.';
 
+// premaintenancebanner
+$string['premaintenancebanner'] = 'Pre-Maintenance Banner';
+$string['premaintenancebanner_help'] = 'Messasge to show in the pre-maintenance banner';
+
+// Default premaintenancebanner
+$string['defaultpremaintenancebanner'] = 'Pre-Maintenance Banner';
+$string['defaultpremaintenancebannervalue'] = 'Shutting down in {{countdown}}';
+$string['defaultpremaintenancebannerdescription'] = 'Messasge to show in the pre-maintenance banner';
+
+// ongoingmaintenancebanner
+$string['ongoingmaintenancebanner'] = 'Ongoing-Maintenance Banner';
+$string['ongoingmaintenancebanner_help'] = 'Messasge to show in the ongoing-maintenance banner';
+
+// Default ongoingmaintenancebanner
+$string['defaultongoingmaintenancebanner'] = 'Ongoing-Maintenance Banner';
+$string['defaultongoingmaintenancebannervalue'] = 'Back online at {$a->stop}.';
+$string['defaultongoingmaintenancebannerdescription'] = 'Messasge to show in the ongoing-maintenance banner';
+
 /*
  * Privacy provider (GDPR)
  */

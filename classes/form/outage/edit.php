@@ -48,6 +48,11 @@ class edit extends moodleform {
     const TITLE_MAX_CHARS = 100;
 
     /**
+     * @var int Maximum number of characters for a outage banner.
+     */
+    const BANNER_MAX_CHARS = 100;
+
+    /**
      * {@inheritDoc}
      * @see moodleform::definition()
      */
@@ -77,6 +82,26 @@ class edit extends moodleform {
         );
         $mform->setType('title', PARAM_TEXT);
         $mform->addHelpButton('title', 'title', 'auth_outage');
+
+        // PRE MAINTENANCE BANNER
+        $mform->addElement(
+            'text',
+            'premaintenancebanner',
+            get_string('premaintenancebanner', 'auth_outage'),
+            'maxlength="'.self::BANNER_MAX_CHARS.'" size="60"'
+        );
+        $mform->setType('premaintenancebanner', PARAM_TEXT);
+        $mform->addHelpButton('premaintenancebanner', 'premaintenancebanner', 'auth_outage');
+
+        // ONGOING MAINTENANCE BANNER
+        $mform->addElement(
+            'text',
+            'ongoingmaintenancebanner',
+            get_string('ongoingmaintenancebanner', 'auth_outage'),
+            'maxlength="'.self::BANNER_MAX_CHARS.'" size="60"'
+        );
+        $mform->setType('ongoingmaintenancebanner', PARAM_TEXT);
+        $mform->addHelpButton('ongoingmaintenancebanner', 'ongoingmaintenancebanner', 'auth_outage');
 
         $mform->addElement('editor', 'description', get_string('description', 'auth_outage'));
         $mform->addHelpButton('description', 'description', 'auth_outage');
@@ -135,6 +160,8 @@ class edit extends moodleform {
             'stoptime' => $data->starttime + $data->outageduration,
             'warntime' => $data->starttime - $data->warningduration,
             'title' => $data->title,
+            'premaintenancebanner' => $data->premaintenancebanner,
+            'ongoingmaintenancebanner' =>  $data->ongoingmaintenancebanner,
             'description' => $data->description['text'],
         ];
         return new outage($outagedata);
@@ -146,6 +173,7 @@ class edit extends moodleform {
      * @throws coding_exception
      */
     public function set_data($outage) {
+
         // Cannot change method signature, check type.
         if ($outage instanceof outage) {
             $this->_form->setDefaults([
@@ -155,6 +183,8 @@ class edit extends moodleform {
                 'outageduration' => $outage->get_duration_planned(),
                 'warningduration' => $outage->get_warning_duration(),
                 'title' => $outage->title,
+                'premaintenancebanner' => $outage->premaintenancebanner,
+                'ongoingmaintenancebanner' => $outage->ongoingmaintenancebanner,
                 'description' => ['text' => $outage->description, 'format' => '1'],
             ]);
         } else {

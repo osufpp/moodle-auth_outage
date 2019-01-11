@@ -177,6 +177,8 @@ class create extends clibase {
             'starttime' => $start,
             'stoptime' => $start + $options['duration'],
             'title' => $options['title'],
+            'premaintenancebanner' => $options['premaintenancebanner'],
+            'ongoingmaintenancebanner' => $options['ongoingmaintenancebanner'],
             'description' => $options['description'],
         ]);
         $id = outagedb::save($outage);
@@ -208,6 +210,8 @@ class create extends clibase {
             'warn' => $outage->get_warning_duration(),
             'duration' => $outage->get_duration_planned(),
             'title' => $outage->title,
+            'premaintenancebanner' => $outage->default_premaintenance_banner,
+            'ongoingmaintenancebanner' => $outage->default_ongoingmaintenance_banner,
             'description' => $outage->description,
         ]);
     }

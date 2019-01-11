@@ -40,6 +40,8 @@ try {
         'start' => null,
         'duration' => (int)($config->default_duration),
         'title' => $config->default_title,
+        'premaintenancebanner' => $config->default_premaintenance_banner,
+        'ongoingmaintenancebanner' => $config->default_ongoingmaintenance_banner,
         'description' => $config->default_description,
     ]);
     $cli->execute();
