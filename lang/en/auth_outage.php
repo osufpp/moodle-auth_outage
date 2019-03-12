@@ -74,11 +74,6 @@ $string['defaultwarningdurationdescription'] = 'Default warning time (in minutes
 $string['defaulttitle'] = 'Title';
 $string['defaulttitledescription'] = 'Default title for outages. Use {{start}} and {{stop}} placeholders as required.';
 $string['defaulttitlevalue'] = 'System down from {{start}} for {{duration}}.';
-$string['defaultdescription'] = 'Description';
-$string['defaultdescriptiondescription'] = 'Default warning message for outages. Use {{start}} and {{stop}} placeholders as required.';
-$string['defaultdescriptionvalue'] = 'There is an scheduled maintenance from {{start}} to {{stop}} and our system will not be available during that time.';
-$string['description'] = 'Public Description';
-$string['description_help'] = 'A full description of the outage, publicly visible by all users.';
 $string['finish'] = 'Finish';
 $string['info15secondsbefore'] = '15 seconds before';
 $string['infoendofoutage'] = 'end of outage';
@@ -97,8 +92,8 @@ $string['menusettings'] = 'Settings';
 $string['menumanage'] = 'Manage outages';
 $string['messageoutagebackonline'] = 'We are back online!';
 $string['messageoutagebackonlinedescription'] = 'You may resume browsing safely.';
-$string['messageoutageongoing'] = 'Back online at {$a->stop}.';
-$string['messageoutagewarning'] = 'Shutting down in {{countdown}}';
+$string['messageoutageongoing'] = 'Back online at {{stop}}.';
+$string['messageoutagewarning'] = 'Shutting down in {{countdown}}.';
 $string['na'] = 'n/a';
 $string['notfound'] = 'No outages found.';
 $string['outageedit'] = 'Edit outage';
@@ -135,7 +130,7 @@ $string['tableheadertitle'] = 'Title';
 $string['tablestarttimefutureformat'] = '{$a->absolute}<br />In {$a->relative}';
 $string['tablestarttimepastformat'] = '{$a->absolute}<br />{$a->relative} ago';
 $string['taskupdatestaticpage'] = 'Update static outage page';
-$string['textplaceholdershint'] = 'You can use {{start}}, {{stop}} and {{duration}} as placeholders on the title and description.';
+$string['textplaceholdershint'] = 'You can use {{start}}, {{stop}}, {{duration}}, and {{countdown}} as placeholders on the title and description.';
 $string['titleerrorinvalid'] = 'Title cannot be left blank.';
 $string['titleerrortoolong'] = 'Title cannot have more than {$a} characters.';
 $string['title'] = 'Title';
@@ -150,7 +145,7 @@ $string['premaintenancebanner_help'] = 'Messasge to show in the pre-maintenance 
 
 // Default premaintenancebanner
 $string['defaultpremaintenancebanner'] = 'Pre-Maintenance Banner';
-$string['defaultpremaintenancebannervalue'] = 'Shutting down in {{countdown}}';
+$string['defaultpremaintenancebannervalue'] = 'Shutting down in {{countdown}}.';
 $string['defaultpremaintenancebannerdescription'] = 'Messasge to show in the pre-maintenance banner';
 
 // ongoingmaintenancebanner
@@ -159,7 +154,7 @@ $string['ongoingmaintenancebanner_help'] = 'Messasge to show in the ongoing-main
 
 // Default ongoingmaintenancebanner
 $string['defaultongoingmaintenancebanner'] = 'Ongoing-Maintenance Banner';
-$string['defaultongoingmaintenancebannervalue'] = 'Back online at {$a->stop}.';
+$string['defaultongoingmaintenancebannervalue'] = 'Back online at {{stop}}.';
 $string['defaultongoingmaintenancebannerdescription'] = 'Messasge to show in the ongoing-maintenance banner';
 
 /*

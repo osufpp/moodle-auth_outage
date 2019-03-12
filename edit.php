@@ -69,7 +69,6 @@ if ($clone) {
         'title' => $config->default_title,
         'premaintenancebanner' => $config->default_premaintenance_banner,
         'ongoingmaintenancebanner' => $config->default_ongoingmaintenance_banner,
-        'description' => $config->default_description,
     ]);
     $action = 'outagecreate';
 }

@@ -179,7 +179,6 @@ class create extends clibase {
             'title' => $options['title'],
             'premaintenancebanner' => $options['premaintenancebanner'],
             'ongoingmaintenancebanner' => $options['ongoingmaintenancebanner'],
-            'description' => $options['description'],
         ]);
         $id = outagedb::save($outage);
 
@@ -212,7 +211,6 @@ class create extends clibase {
             'title' => $outage->title,
             'premaintenancebanner' => $outage->default_premaintenance_banner,
             'ongoingmaintenancebanner' => $outage->default_ongoingmaintenance_banner,
-            'description' => $outage->description,
         ]);
     }
 
@@ -227,7 +225,7 @@ class create extends clibase {
             $options[$param] = $this->merge_options_check_parameters_int_nonnegative($options[$param], $param);
         }
 
-        foreach (['title', 'description'] as $param) {
+        foreach (['title', 'premaintenancebanner', 'ongoingmaintenancebanner'] as $param) {
             $options[$param] = $this->merge_options_check_parameters_string_nonempty($options[$param], $param);
         }
 

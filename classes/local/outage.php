@@ -100,11 +100,6 @@ class outage {
     public $title = null;
 
     /**
-     * @var string|null Description of the outage (some HTML allowed).
-     */
-    public $description = null;
-
-    /**
      * @var string|null Description of the outage (no HTML).
      */
     public $premaintenancebanner = null;
@@ -250,16 +245,8 @@ class outage {
     }
 
     /**
-     * Get the description with properly replaced placeholders such as {{start}} and {{stop}}.
-     * @return string Description.
-     */
-    public function get_description() {
-        return $this->replace_placeholders($this->description);
-    }
-
-    /**
      * Get the pre-maintenance banner with properly replaced placeholders such as {{start}} and {{stop}}.
-     * @return string Description.
+     * @return string premaintenancebanner.
      */
     public function get_pre_maintenance_banner() {
         return $this->replace_placeholders($this->premaintenancebanner);
@@ -267,7 +254,7 @@ class outage {
 
     /**
      * Get the ongoing-maintenance banner with properly replaced placeholders such as {{start}} and {{stop}}.
-     * @return string Description.
+     * @return string ongoingmaintenancebanner.
      */
     public function get_ongoing_maintenance_banner() {
         return $this->replace_placeholders($this->ongoingmaintenancebanner);

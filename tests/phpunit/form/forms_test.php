@@ -74,7 +74,6 @@ class forms_test extends auth_outage_base_testcase {
         self::assertSame('The title.', $outage->title);
         self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
         self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
-        self::assertSame('The <b>description</b>.', $outage->description);
     }
 
     /**
@@ -137,22 +136,6 @@ class forms_test extends auth_outage_base_testcase {
     }
 
     /**
-     * Check invalid format for description.
-     */
-    public function test_edit_description_invalid_format() {
-        if ($this->skip_because_moodle_is_below_30('Moodle POST mocking was fixed in Moodle 30.')) {
-            return;
-        }
-
-        $this->mock_edit_post();
-        $_POST['description'] = ['text' => 'The <b>description</b>.', 'format' => '2'];
-        $edit = new edit();
-        self::assertNull($edit->get_data());
-        self::assertCount(1, phpunit_util::get_debugging_messages());
-        phpunit_util::reset_debugging();
-    }
-
-    /**
      * Check if set data works properly.
      */
     public function test_setdata() {
@@ -164,7 +147,6 @@ class forms_test extends auth_outage_base_testcase {
             'title'       => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         $edit = new edit();
         $edit->set_data($outage);
@@ -199,7 +181,6 @@ class forms_test extends auth_outage_base_testcase {
             'title'                             => 'The title.',
             'premaintenancebanner'              => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner'          => 'Ongoing-maintenance Banner',
-            'description'                       => ['text' => 'The <b>description</b>.', 'format' => '1'],
             'submitbutton'                      => 'Save changes',
         ];
     }

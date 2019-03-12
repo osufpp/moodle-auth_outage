@@ -63,7 +63,6 @@ class outage_test extends auth_outage_base_testcase {
         $obj->finished = 4;
         $obj->stoptime = 5;
         $obj->title = 'Title';
-        $obj->description = 'Description';
         $obj->premaintenancebanner = 'Pre-maintenance Banner',
         $obj->ongoingmaintenancebanner = 'Ongoing-maintenance Banner',
         $outage = new outage($obj);
@@ -74,7 +73,6 @@ class outage_test extends auth_outage_base_testcase {
         self::assertSame($obj->finished, $outage->finished);
         self::assertSame($obj->stoptime, $outage->stoptime);
         self::assertSame($obj->title, $outage->title);
-        self::assertSame($obj->description, $outage->description);
     }
 
     /**
@@ -98,7 +96,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertSame(outage::STAGE_STOPPED, $outage->get_stage());
     }
@@ -126,7 +123,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertFalse($outage->is_ongoing($now));
 
@@ -138,7 +134,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertTrue($outage->is_ongoing($now));
 
@@ -150,7 +145,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertFalse($outage->is_ongoing($now));
     }
@@ -169,7 +163,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertFalse($outage->is_active($now));
 
@@ -181,7 +174,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertTrue($outage->is_active($now));
 
@@ -193,7 +185,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertTrue($outage->is_active($now));
 
@@ -205,7 +196,6 @@ class outage_test extends auth_outage_base_testcase {
             'title' => '',
             'premaintenancebanner' => '',
             'ongoingmaintenancebanner' => '',
-            'description' => '',
         ]);
         self::assertFalse($outage->is_active($now));
     }
@@ -283,29 +273,6 @@ class outage_test extends auth_outage_base_testcase {
         self::assertFalse($outage->is_active($now));
         self::assertFalse($outage->is_ongoing($now));
         self::assertTrue($outage->has_ended());
-    }
-
-    /**
-     * Tests if getting title and description replaces the placeholders.
-     */
-    public function test_gettitle_getdescription() {
-        $now = time();
-        $outage = new outage([
-            'warntime' => $now - 50,
-            'starttime' => $now - 40,
-            'stoptime' => $now - 30,
-            'finished' => $now - 20,
-            'title' => 'Title {{start}} {{stop}} {{duration}}',
-            'premaintenancebanner' => 'Pre-Maintenance Banner {{start}} {{stop}} {{duration}}',
-            'ongoingmaintenancebanner' => 'Ongoing-Maintenance Banner {{start}} {{stop}} {{duration}}',
-            'description' => 'Description {{start}} {{stop}} {{duration}}',
-        ]);
-        $title = $outage->get_title();
-        self::assertNotContains('{', $title);
-        self::assertNotContains('}', $title);
-        $description = $outage->get_description();
-        self::assertNotContains('{', $description);
-        self::assertNotContains('}', $description);
     }
 
     /**

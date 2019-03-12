@@ -92,7 +92,6 @@ class calendar {
     private static function create_data(outage $outage) {
         return [
             'name' => $outage->get_title(),
-            'description' => $outage->get_description(),
             'courseid' => 1,
             'groupid' => 0,
             'userid' => 0,

@@ -103,9 +103,6 @@ class edit extends moodleform {
         $mform->setType('ongoingmaintenancebanner', PARAM_TEXT);
         $mform->addHelpButton('ongoingmaintenancebanner', 'ongoingmaintenancebanner', 'auth_outage');
 
-        $mform->addElement('editor', 'description', get_string('description', 'auth_outage'));
-        $mform->addHelpButton('description', 'description', 'auth_outage');
-
         $mform->addElement('static', 'usagehints', '', get_string('textplaceholdershint', 'auth_outage'));
 
         $this->add_action_buttons();
@@ -144,13 +141,9 @@ class edit extends moodleform {
      * @return outage submitted data; NULL if not valid or not submitted or cancelled
      */
     public function get_data() {
-        // Fetch data and check if description is the correct format.
+        // Fetch data
         $data = parent::get_data();
         if (is_null($data)) {
-            return null;
-        }
-        if ($data->description['format'] != '1') {
-            debugging('Not implemented for format '.$data->description['format'], DEBUG_DEVELOPER);
             return null;
         }
         $outagedata = [
@@ -162,7 +155,6 @@ class edit extends moodleform {
             'title' => $data->title,
             'premaintenancebanner' => $data->premaintenancebanner,
             'ongoingmaintenancebanner' =>  $data->ongoingmaintenancebanner,
-            'description' => $data->description['text'],
         ];
         return new outage($outagedata);
     }
@@ -185,7 +177,6 @@ class edit extends moodleform {
                 'title' => $outage->title,
                 'premaintenancebanner' => $outage->premaintenancebanner,
                 'ongoingmaintenancebanner' => $outage->ongoingmaintenancebanner,
-                'description' => ['text' => $outage->description, 'format' => '1'],
             ]);
         } else {
             throw new coding_exception('$outage must be an outage object.', $outage);
