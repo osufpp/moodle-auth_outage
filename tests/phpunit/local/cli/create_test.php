@@ -62,7 +62,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Default Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
         $this->execute($cli);
@@ -80,7 +79,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Default Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
         $this->execute($cli);
@@ -98,7 +96,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Default Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
         $this->execute($cli);
@@ -116,7 +113,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Default Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Default Description',
         ]);
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);
         $this->execute($cli);
@@ -162,7 +158,6 @@ class create_test extends auth_outage_cli_testcase {
             '--title=A Title',
             '--premaintenancebanner=Pre-maintenance Banner',
             '--ongoingmaintenancebanner=Ongoing-maintenance Banner',
-            '--description=A Description',
         ]);
         $now = time();
         $cli = new create();
@@ -178,7 +173,6 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame(30, $outage->get_duration_planned());
         self::assertNull($outage->finished);
         self::assertSame('A Title', $outage->title);
-        self::assertSame('A Description', $outage->description);
     }
 
     /**
@@ -194,7 +188,6 @@ class create_test extends auth_outage_cli_testcase {
             '--title=Title',
             '--premaintenancebanner=Pre-maintenanceBanner',
             '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
-            '--description=Description',
         ]);
         $now = time();
         $cli = new create();
@@ -213,7 +206,6 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame('Title', $outage->title);
         self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
         self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
-        self::assertSame('Description', $outage->description);
     }
 
     /**
@@ -235,7 +227,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Default Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Default Description',
         ]);
         $text = $this->execute($cli);
         self::assertContains('created', $text);
@@ -250,7 +241,6 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame('Default Title', $outage->title);
         self::assertSame('The <b>premaintenancebanner</b>.', $outage->premaintenancebanner);
         self::assertSame('The <b>ongoingmaintenancebanner</b>.', $outage->ongoingmaintenancebanner);
-        self::assertSame('Default Description', $outage->description);
     }
 
     /**
@@ -268,7 +258,6 @@ class create_test extends auth_outage_cli_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         $id = outagedb::save($original);
         // Clone it using CLI.
@@ -288,7 +277,6 @@ class create_test extends auth_outage_cli_testcase {
         self::assertSame($original->title, $cloned->title);
         self::assertSame($original->premaintenancebanner, $cloned->premaintenancebanner);
         self::assertSame($original->ongoingmaintenancebanner, $cloned->ongoingmaintenancebanner);
-        self::assertSame($original->description, $cloned->description);
     }
 
     /**
@@ -318,7 +306,6 @@ class create_test extends auth_outage_cli_testcase {
             '--title=Title',
             '--premaintenancebanner=Pre-maintenanceBanner',
             '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
-            '--description=Description',
         ]);
         $now = time();
         $cli = new create();
@@ -349,7 +336,6 @@ class create_test extends auth_outage_cli_testcase {
             '--title=Title',
             '--premaintenancebanner=Pre-maintenanceBanner',
             '--ongoingmaintenancebanner=Ongoing-maintenanceBanner',
-            '--description=Description',
         ]);
         $cli = new create();
         $this->set_expected_cli_exception(cli_exception::ERROR_PARAMETER_INVALID);

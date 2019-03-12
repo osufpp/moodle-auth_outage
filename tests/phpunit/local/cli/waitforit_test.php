@@ -127,7 +127,6 @@ class waitforit_test extends auth_outage_cli_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]));
         $this->set_parameters(['-id='.$id]);
         $cli = new waitforit();
@@ -150,7 +149,6 @@ class waitforit_test extends auth_outage_cli_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]));
         $this->set_parameters(['-v', '--active']);
         $cli = new waitforit();
@@ -175,7 +173,6 @@ class waitforit_test extends auth_outage_cli_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]));
         $this->set_parameters(['-v', '--active', '--sleep=30']);
         $cli = new waitforit();
@@ -206,7 +203,6 @@ class waitforit_test extends auth_outage_cli_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]));
         $this->set_parameters(['-v', '--active', '--sleep=30']);
         $cli = new waitforit();

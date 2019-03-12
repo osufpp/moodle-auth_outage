@@ -12,7 +12,6 @@
         <FIELD NAME="starttime" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="When outage starts."/>
         <FIELD NAME="stoptime" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="When outage ends."/>
         <FIELD NAME="title" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Title for the outage (short description)."/>
-        <FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="More information about the outage."/>
         <FIELD NAME="premaintenancebanner" LENGTH="100" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Message to show in the pre-maintenance banner."/>
         <FIELD NAME="ongoingmaintenancebanner" LENGTH="100" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="Message to show in the during-maintenance banner."/>
         <FIELD NAME="createdby" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Who created this entry."/>

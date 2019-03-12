@@ -58,7 +58,6 @@ class outagelib_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
 
         set_config('maintenance_message', 'A message.');
@@ -96,7 +95,6 @@ class outagelib_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::assertEmpty($CFG->additionalhtmltopofbody);
@@ -137,7 +135,6 @@ class outagelib_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::assertEmpty($CFG->additionalhtmltopofbody);
@@ -176,7 +173,6 @@ class outagelib_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::assertEmpty($CFG->additionalhtmltopofbody);
@@ -201,7 +197,6 @@ class outagelib_test extends advanced_testcase {
         $keys = [
             'css',
             'default_autostart',
-            'default_description',
             'default_duration',
             'default_title',
             'default_warning_duration',
@@ -230,7 +225,6 @@ class outagelib_test extends advanced_testcase {
             'allowedips',
             'css',
             'default_autostart',
-            'default_description',
             'default_duration',
             'default_title',
             'default_warning_duration',
@@ -253,7 +247,6 @@ class outagelib_test extends advanced_testcase {
         set_config('allowedips', " \n", 'auth_outage');
         set_config('css', " \n", 'auth_outage');
         set_config('default_autostart', " \n", 'auth_outage');
-        set_config('default_description', " \n", 'auth_outage');
         set_config('default_duration', " \n", 'auth_outage');
         set_config('default_title', " \n", 'auth_outage');
         set_config('default_warning_duration', " \n", 'auth_outage');
@@ -285,7 +278,6 @@ class outagelib_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::assertEmpty($CFG->additionalhtmltopofbody);
@@ -480,7 +472,6 @@ EOT;
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         outagedb::save($outage);
 
@@ -507,7 +498,6 @@ EOT;
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::assertEmpty($CFG->additionalhtmltopofbody);
@@ -533,7 +523,6 @@ EOT;
             'title'       => 'Title',
             'premaintenancebanner' => 'Pre-maintenanceBanner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenanceBanner',
-            'description' => 'Description',
         ]);
         set_config('allowedips', '127.0.0.1', 'auth_outage');
         outagedb::save($outage);

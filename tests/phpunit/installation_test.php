@@ -64,7 +64,6 @@ class installation_test extends auth_outage_base_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         \auth_outage\dml\outagedb::save($outage);
         self::assertSame(1, $DB->count_records_select('event', "eventtype = 'auth_outage'", null));

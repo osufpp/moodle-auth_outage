@@ -85,14 +85,6 @@ if ($hassiteconfig && is_enabled_auth('outage')) {
         PARAM_TEXT
     ));
 
-    $settings->add(new admin_setting_configtextarea(
-        'auth_outage/default_description',
-        get_string('defaultdescription', 'auth_outage'),
-        get_string('defaultdescriptiondescription', 'auth_outage'),
-        $defaults['default_description'],
-        PARAM_RAW
-    ));
-
     $settings->add(new admin_setting_heading(
         'plugin',
         get_string('settingssectionplugin', 'auth_outage'),

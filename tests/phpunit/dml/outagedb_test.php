@@ -204,7 +204,7 @@ class outagedb_test extends auth_outage_base_testcase {
             $inserted = outagedb::get_by_id($id);
             self::assertNotNull($inserted);
             // Check its data.
-            foreach (['starttime', 'stoptime', 'warntime', 'title', 'premaintenancebanner', 'ongoingmaintenancebanner', 'description'] as $field) {
+            foreach (['starttime', 'stoptime', 'warntime', 'title', 'premaintenancebanner', 'ongoingmaintenancebanner'] as $field) {
                 self::assertSame($outage->$field, $inserted->$field, 'Field '.$field.' does not match.');
             }
             // Check generated data.
@@ -218,7 +218,6 @@ class outagedb_test extends auth_outage_base_testcase {
             // Get it again and check data.
             $updated = outagedb::get_by_id($id);
             self::assertSame('Title ID'.$id, $updated->title);
-            self::assertSame($inserted->description, $updated->description);
             // Delete it.
             outagedb::delete($id);
             $deleted = outagedb::get_by_id($id);
@@ -448,7 +447,6 @@ class outagedb_test extends auth_outage_base_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         $id = outagedb::save($outage);
         self::assertTrue(!$outage->is_ongoing($time));
@@ -490,7 +488,6 @@ class outagedb_test extends auth_outage_base_testcase {
             'title' => 'The Title '.$i,
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'A <b>description</b> in HTML.',
         ]);
     }
 }

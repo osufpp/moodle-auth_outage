@@ -69,7 +69,6 @@ class events_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         $outage->id = outagedb::save($outage);
         self::$outage = $outage;

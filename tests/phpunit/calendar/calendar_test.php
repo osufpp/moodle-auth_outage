@@ -62,7 +62,6 @@ class calendar_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
         calendar::create(self::$outage);
         $this->check_calendar();
@@ -108,7 +107,6 @@ class calendar_test extends advanced_testcase {
             'title' => 'Title',
             'premaintenancebanner' => 'Pre-maintenance Banner',
             'ongoingmaintenancebanner' => 'Ongoing-maintenance Banner',
-            'description' => 'Description',
         ]);
 
         calendar::update($outage);
@@ -133,7 +131,6 @@ class calendar_test extends advanced_testcase {
     private function check_calendar() {
         $calendar = calendar::load(self::$outage->id);
         self::assertSame(self::$outage->title, $calendar->name);
-        self::assertSame(self::$outage->description, $calendar->description);
         self::assertSame('auth_outage', $calendar->eventtype);
         self::assertSame('', $calendar->modulename);
         self::assertEquals(self::$outage->starttime, $calendar->timestart);
